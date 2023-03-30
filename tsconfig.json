@@ -9,6 +9,7 @@
       "@environments/*": ["src/environments/*"],
       "@shared/*": ["src/app/shared/*"],
       "@authentication/*": ["src/app/authentication/*"],
+      "@public-dashboards/*": ["src/app/public-dashboards/*"],
     },
     "strictPropertyInitialization": false,
     "outDir": "./dist/out-tsc",

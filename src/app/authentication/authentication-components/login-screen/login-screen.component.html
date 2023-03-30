@@ -1,0 +1,21 @@
+<div class="d-flex flex-column pt-5">
+  <div class="d-flex flex-column text-center text text__title text__title--primary mb-5 pb-4">
+    <div>Welcome {{usernameParam}}</div>
+    <div>Please enter your <span *ngIf="usernameParam">new</span> credentials to continue</div>
+  </div>
+
+  <form class="container col-md-6 col-lg-4 col-md-6 col-sm-12" [formGroup]="loginForm" (submit)="onSubmit()">
+    <div class="row justify-content-center">
+      <label for="username-email" class="row text text__label text__title--primary mb-2">username/email</label>
+      <input id="username-email" type="text" formControlName="username" class="row input input__text mb-3">
+      <label for="password" class="row text text__label text__title--primary mb-2">password</label>
+      <input id="password" type="password" formControlName="password" class="row input input__text mb-5">
+      <button type="submit" class="button button__primary row">Login</button>
+    </div>
+  </form>
+
+  <div class="d-flex flex-row justify-content-center mt-4">
+    <span class="text text__label text__label--secondary">Don't have an account? &nbsp;</span>
+    <a href="auth/register" class="link link__primary">Register</a>
+  </div>
+</div>
