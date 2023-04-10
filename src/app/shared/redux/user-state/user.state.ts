@@ -1,11 +1,9 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { Login } from "@authentication/shared-authentication/redux/authentication-state/authentication.actions";
-import { AuthenticationService } from "@authentication/shared-authentication/services/authentication.service";
 import { Injectable } from "@angular/core";
-import { catchError, tap, throwError } from "rxjs";
 import { UserInfo } from "@shared/models/user.model";
-import { UpdateUser } from "@shared/redux/user-state/user.actions";
+import { TokenUpdateUser, UpdateUser } from "@shared/redux/user-state/user.actions";
 import { CookieService } from "ngx-cookie-service";
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 export interface UserStateModel {
   isLogged: boolean;
@@ -30,15 +28,42 @@ export class UserState {
 
   @Action(UpdateUser)
   updateUser({ getState, patchState }: StateContext<UserStateModel>, action: UpdateUser) {
-    // ToDo -> take info from token cookie, request user info from server
-
-    // if (action.loggedIn === false) {
-    //   this.cookieService.delete('AccessToken');
-    // }
+    let userInfo = action.userInfo;
+    if (action.loggedIn === false) {
+      this.cookieService.delete('AccessToken');
+      userInfo = undefined;
+    }
 
     patchState({
       isLogged: action.loggedIn,
-      user: action.userInfo,
+      user: userInfo,
+    });
+  }
+
+  @Action(TokenUpdateUser)
+  startApplicationUpdateUser({ getState, patchState }: StateContext<UserStateModel>, action: TokenUpdateUser) {
+    let token = action.token;
+    if (!token) {
+      token = this.cookieService.get('AccessToken');
+    }
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(token);
+    if (!decodedToken?.sub || helper.isTokenExpired(token)) {
+      patchState({
+        isLogged: false,
+        user: undefined,
+      })
+      return
+    }
+    const isLogged = true;
+    const userInfo = {
+      username: decodedToken.sub,
+      roles: decodedToken.roles
+    }
+
+    patchState({
+      isLogged: isLogged,
+      user: userInfo as UserInfo,
     });
   }
 }

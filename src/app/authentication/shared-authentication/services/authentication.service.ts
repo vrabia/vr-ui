@@ -20,4 +20,8 @@ export class AuthenticationService {
   public login(credentials: Credentials) {
     return this.http.post(`${environment.vrauthServiceUrl}/auth/login`, credentials, { withCredentials: true });
   }
+
+  public authenticateDevice(code: string) {
+    return this.http.get(`${environment.vrauthServiceUrl}/auth/device/${code}`, {withCredentials: true});
+  }
 }

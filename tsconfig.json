@@ -2,14 +2,30 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
-"@app/*": ["src/app/*"],
-      "@assets/*": ["src/assets/*"],
-      "@environments/*": ["src/environments/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@authentication/*": ["src/app/authentication/*"],
-      "@public-dashboards/*": ["src/app/public-dashboards/*"],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@environments/*": [
+        "src/environments/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@authentication/*": [
+        "src/app/authentication/*"
+      ],
+      "@public-dashboards/*": [
+        "src/app/public-dashboards/*"
+      ],
+      "@feed/*": [
+        "src/app/feed/*"
+      ]
     },
     "strictPropertyInitialization": false,
     "outDir": "./dist/out-tsc",

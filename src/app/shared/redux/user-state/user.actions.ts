@@ -5,3 +5,8 @@ export class UpdateUser {
   constructor(public userInfo?: UserInfo, public loggedIn?: boolean) {}
 }
 
+export class TokenUpdateUser {
+  static readonly type = '[UserState] StartApplicationUpdateUser';
+  constructor(public token?: string) {}
+}
+

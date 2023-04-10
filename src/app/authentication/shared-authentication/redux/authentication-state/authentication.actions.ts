@@ -7,5 +7,11 @@ export class Login {
 
 export class Register {
   static readonly type = '[AuthenticationState] Register';
-  constructor(public credentials: RegisterCredentials) {}
+  constructor(public credentials: RegisterCredentials, public previousRoute?: string) {}
+}
+
+export class AuthenticateDevice {
+  static readonly type = '[AuthenticationState] AuthenticateDevice';
+  constructor(public code: string) {
+  }
 }
