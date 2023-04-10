@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from "@shared/base/base.component";
 import { Store } from "@ngxs/store";
-import { FormBuilder, FormControl, FormControlStatus, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { CustomValidators } from "@shared/validators/validators";
 import {
   AddressFormControls,
@@ -10,6 +10,8 @@ import {
 import { MusicGenres } from "@shared/models/music.enum";
 import { Register } from "@authentication/shared-authentication/redux/authentication-state/authentication.actions";
 import { RegisterCredentials } from "@authentication/shared-authentication/models/authentication.model";
+import { PREVIOUS_QUERY_PARAM } from "../login-screen/login-screen.enums";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-register-screen',
@@ -17,7 +19,8 @@ import { RegisterCredentials } from "@authentication/shared-authentication/model
   styleUrls: ['./register-screen.component.scss']
 })
 export class RegisterScreenComponent extends BaseComponent implements OnInit {
-
+  readonly PREVIOUS_QUERY_PARAM = PREVIOUS_QUERY_PARAM;
+  previousRouteParam: string;
   musicGenres: string[];
   registerScreenFormControls = RegisterScreenFormControls;
   addressFormControls = AddressFormControls;
@@ -27,11 +30,15 @@ export class RegisterScreenComponent extends BaseComponent implements OnInit {
 
   stepNr = 1;
 
-  constructor(private store: Store, private formBuilder: FormBuilder) {
+  constructor(private store: Store, private formBuilder: FormBuilder, private route: ActivatedRoute) {
     super();
   }
 
   ngOnInit(): void {
+    this.subscribeToDefined(this.route.queryParams, (params) => {
+      this.previousRouteParam = params[PREVIOUS_QUERY_PARAM];
+    });
+
     this.musicGenres = Object.values(MusicGenres) as string[];
     this.registerFormPart1 = this.formBuilder.group({
         //ToDo add needed validation
@@ -75,6 +82,6 @@ export class RegisterScreenComponent extends BaseComponent implements OnInit {
       }
     }
 
-    this.store.dispatch(new Register(request));
+    this.store.dispatch(new Register(request, this.previousRouteParam));
   }
 }

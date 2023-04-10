@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticatedGuard } from "@shared/guards/authenticated.guard";
 
 const routes: Routes = [
   {
@@ -8,11 +9,16 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('@public-dashboards/public-dashboards-components/public-dashboards.module').then(m => m.PublicDashboardsModule)
+    loadChildren: () => import('@public-dashboards/public-dashboards-components/public-dashboards.module').then(m => m.PublicDashboardsModule),
+  },
+  {
+    path: 'feed',
+    loadChildren: () => import('@feed/feed.module').then(m => m.FeedModule),
+    canActivate: [AuthenticatedGuard]
   },
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'feed',
     pathMatch: 'full'
   },
 ];

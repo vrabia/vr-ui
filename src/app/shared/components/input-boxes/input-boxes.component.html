@@ -1,0 +1,11 @@
+<div class="code-input-container">
+  <input
+    *ngFor="let i of numbers; let index = index"
+    class="code-input"
+    type="text"
+    maxlength="1"
+    autofocus
+    (input)="handleInput(index, $event)"
+    (keydown.backspace)="handleBackspace(index, $event)"
+  />
+</div>

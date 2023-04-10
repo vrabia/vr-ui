@@ -1,11 +1,23 @@
 @import "src/variables";
 
+$huge-size: 3rem;
 $title-size: 1.5rem;
 $subtitle-size: 1rem;
 $label-size: 1rem;
 $note-size: 0.8rem;
 
 .text {
+  &__huge {
+    font-size: $huge-size;
+    font-weight: bold;
+    &--primary {
+      color: $primary;
+    }
+    &--secondary {
+      color: $secondary;
+    }
+  }
+
   &__title {
     font-size: $title-size;
     font-weight: bold;
@@ -74,6 +86,7 @@ $note-size: 0.8rem;
   text-decoration: none;
   font-weight: bold;
   font-size: $label_size;
+  cursor: pointer;
 
   &__primary {
     color: $primary;

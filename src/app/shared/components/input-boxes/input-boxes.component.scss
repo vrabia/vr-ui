@@ -1,0 +1,22 @@
+@import "src/styles";
+
+.code-input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.code-input {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 10px;
+  text-align: center;
+  font-size: $title-size;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  color: $primary;
+  font-weight: bold;
+
+  &:focus {
+    outline: 3px solid $primary;
+  }
+}
