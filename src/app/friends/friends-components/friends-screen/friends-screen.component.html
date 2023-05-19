@@ -1,0 +1,9 @@
+<div class="tabs-container mt-4 mb-4">
+  <ng-container *ngFor="let tab of tabs; let i = index">
+    <div class="tabs-link" [ngClass]="{'tabs-link__border': i < tabs.length - 1}"
+         [routerLink]="tab.link">{{tab.name}}</div>
+  </ng-container>
+</div>
+<div class="padding-pages">
+  <router-outlet></router-outlet>
+</div>

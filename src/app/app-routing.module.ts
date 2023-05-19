@@ -17,6 +17,11 @@ const routes: Routes = [
     canActivate: [AuthenticatedGuard]
   },
   {
+    path: 'friends',
+    loadChildren: () => import('@friends/friends.module').then(m => m.FriendsModule),
+    canActivate: [AuthenticatedGuard]
+  },
+  {
     path: '',
     redirectTo: 'feed',
     pathMatch: 'full'

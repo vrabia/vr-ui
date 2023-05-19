@@ -14,6 +14,7 @@ import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 import { JwtTokenInterceptor } from "@shared/interceptors/jwt-token.interceptor";
 import { NgxsStoragePluginModule, SESSION_STORAGE_ENGINE } from "@ngxs/storage-plugin";
 import { UserState } from "@shared/redux/user-state/user.state";
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UserState } from "@shared/redux/user-state/user.state";
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    InfiniteScrollModule,
     NgxsModule.forRoot(appStates),
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),

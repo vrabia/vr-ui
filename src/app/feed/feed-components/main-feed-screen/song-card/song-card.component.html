@@ -1,0 +1,14 @@
+<div>
+  <div class="text text__default text__default--secondary text__default--bold px-2">{{listenedSong.user?.name}}</div>
+  <div class="song-card">
+    <div class="title-artist-area">
+      <div class="text text__default text__default--primary">{{listenedSong.song.title}}</div>
+      <div class="text text__default text__default--secondary">{{listenedSong.song.artist}}</div>
+    </div>
+    <div class="details-area">
+      <div [ngClass]="{'genre-label': listenedSong.song.genre}" class="text text-center">{{listenedSong.song.genre}}</div>
+      <div
+        class="text text__default text__default--primary">{{listenedSong.lastListenDate | date : 'dd.MM.yyyy  hh:mm' }}</div>
+    </div>
+  </div>
+</div>

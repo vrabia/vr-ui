@@ -1,1 +1,11 @@
-<p>main-feed-screen works!</p>
+<div infinite-scroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="1000"
+     (scrolled)="requestNextPage()" class="d-flex flex-row background background__profile">
+  <div class="cards-area">
+    <div class="text text__title text__title--primary mb-4 mt-4">Here you can see what other people are listening to</div>
+    <ng-container *ngFor="let song of historyPageSongs">
+      <app-profile-history-card [listenedSong]="song"></app-profile-history-card>
+    </ng-container>
+  </div>
+</div>

@@ -6,14 +6,17 @@ export interface Address {
   zip: string;
 }
 
-export interface UserInfo {
-  id: number;
-  name: string;
+export interface UserInfo extends UserDetail{
   email: string;
-  birthdate: string;
-  about: string;
-  genre: string;
   roles: Roles[];
   address: Address;
   username: string;
+}
+
+export interface UserDetail  {
+  id: string;
+  name: string;
+  birthdate: string;
+  about: string;
+  genre: string;
 }
