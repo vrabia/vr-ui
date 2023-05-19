@@ -1,0 +1,5 @@
+<div class="search-input-container">
+  <input  [(ngModel)]="input"
+          (ngModelChange)="this.inputChanged.next($event)" maxlength="60" class="search-input">
+  <img alt="search-icon" src="assets/pictures/search-icon.png">
+</div>

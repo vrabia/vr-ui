@@ -26,6 +26,11 @@ export class UserState {
     return state.isLogged;
   }
 
+  @Selector()
+  static username(state: UserStateModel) {
+    return state.user?.username;
+  }
+
   @Action(UpdateUser)
   updateUser({ getState, patchState }: StateContext<UserStateModel>, action: UpdateUser) {
     let userInfo = action.userInfo;

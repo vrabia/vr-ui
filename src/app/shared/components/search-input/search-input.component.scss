@@ -1,0 +1,23 @@
+@import "src/styles";
+
+.search-input-container {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+  width: 100%;
+  max-width: 750px;
+  border: $input-border-width solid $primary;
+  border-radius: $input-border-radius;
+  padding: $input-padding-y $input-padding-x $input-padding-y $input-padding-x;
+}
+
+.search-input {
+  border: none;
+  width: 90%;
+  height: 100%;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}

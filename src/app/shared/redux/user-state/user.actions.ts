@@ -9,4 +9,3 @@ export class TokenUpdateUser {
   static readonly type = '[UserState] StartApplicationUpdateUser';
   constructor(public token?: string) {}
 }
-

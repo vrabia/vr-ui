@@ -8,7 +8,7 @@ import { AuthenticationService } from "@authentication/shared-authentication/ser
 import { Injectable } from "@angular/core";
 import { catchError, tap, throwError } from "rxjs";
 import { UserState } from "@shared/redux/user-state/user.state";
-import { UpdateUser } from "@shared/redux/user-state/user.actions";
+import { TokenUpdateUser, UpdateUser } from "@shared/redux/user-state/user.actions";
 import { Navigate } from "@ngxs/router-plugin";
 import {
   PREVIOUS_QUERY_PARAM,
@@ -47,7 +47,7 @@ export class AuthenticationState {
 
     return this.authenticationService.login(action.credentials).pipe(
       tap((response) => {
-          this.store.dispatch(new UpdateUser(undefined, true));
+          this.store.dispatch(new TokenUpdateUser());
           patchState({
             errors: [],
           });

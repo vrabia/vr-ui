@@ -1,0 +1,29 @@
+@import "src/styles";
+
+.tabs-link {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: $section-size;
+  color: $secondary;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &__border {
+    border-right: 0.2rem solid $secondary;
+  }
+}
+
+.tabs-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.padding-pages {
+  padding-left: 1rem;
+}

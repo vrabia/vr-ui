@@ -1,4 +1,5 @@
 @import "src/styles";
+@import "src/styles/media-queries";
 
 .header {
   height: $header-size;
@@ -7,4 +8,22 @@
 
 .logo-image {
   cursor: pointer;
+}
+
+.navbar-content {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+
+  @include xl-screen {
+    width: 25%;
+  }
+
+  @include l-screen {
+    width: 35%;
+  }
+
+  @include m-screen {
+    width: 50%;
+  }
 }

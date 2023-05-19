@@ -49,7 +49,7 @@ export class LoginScreenComponent extends BaseComponent implements OnInit {
             this.router.navigate([`${this.previousRouteParam}`]);
           }
         } else {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/feed']);
         }
       }
     });

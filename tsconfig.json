@@ -25,7 +25,10 @@
       ],
       "@feed/*": [
         "src/app/feed/*"
-      ]
+      ],
+      "@friends/*": [
+        "src/app/friends/*"
+      ],
     },
     "strictPropertyInitialization": false,
     "outDir": "./dist/out-tsc",

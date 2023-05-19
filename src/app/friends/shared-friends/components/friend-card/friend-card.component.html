@@ -1,0 +1,15 @@
+<div>
+  <div class="user-card">
+    <div class="user-details-area">
+      <div class="text text__default text__default--secondary text__default--bold">{{friend.friend.username}} <span style="font-weight: normal">- {{friend.friend.name}}</span></div>
+      <div class="text text__default text__default--secondary">{{friend.friend.email}}</div>
+    </div>
+    <div class="user-actions-area">
+      <button *ngIf="friend.status === FriendStatus.ACCEPTED" class="button button__primary" (click)="removeFriend()">Remove</button>
+      <button *ngIf="friend.status === FriendStatus.SENT" class="button button__primary" (click)="cancelRequest()">Cancel</button>
+      <button *ngIf="friend.status === FriendStatus.RECEIVED" class="button button__primary" (click)="acceptRequest()">Accept</button>
+      <button *ngIf="friend.status === FriendStatus.RECEIVED" class="button button__primary" (click)="declineRequest()">Decline</button>
+      <button *ngIf="friend.status === FriendStatus.NONE" class="button button__primary" (click)="sendRequest()">Add</button>
+    </div>
+  </div>
+</div>

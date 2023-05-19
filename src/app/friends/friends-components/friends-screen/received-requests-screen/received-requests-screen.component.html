@@ -1,0 +1,14 @@
+<app-search-input (searchEvent)="requestSearchedFriends($event)"></app-search-input>
+<div infinite-scroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="1000"
+     (scrolled)="requestNextPage()"
+     class="mt-5"
+>
+  <ng-container *ngFor="let friend of friends">
+    <app-friend-card [friend]="friend"></app-friend-card>
+  </ng-container>
+  <div *ngIf="!friends.length" class="text text__section text__section--secondary">It's empty in here. We suggest
+    sending some friend request!
+  </div>
+</div>
