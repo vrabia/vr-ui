@@ -42,7 +42,7 @@ export class LoginScreenComponent extends BaseComponent implements OnInit {
     //TODO -> fix this fucked up logic
     this.subscribeToDefined(this.$isLoggedIn, (isLoggedIn) => {
       if (isLoggedIn) {
-        if (this.previousRouteParam) {
+        if (this.previousRouteParam && this.previousRouteParam !== 'undefined') {
           if (this.previousRouteParam === 'device') {
             this.router.navigate([`${this.previousRouteParam}`], { relativeTo: this.route });
           } else {

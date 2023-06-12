@@ -66,7 +66,13 @@ export class AuthenticationState {
   register({ getState, patchState }: StateContext<AuthenticationStateModel>, action: Register) {
     return this.authenticationService.register(action.credentials).pipe(
       tap((_response) => {
-          this.store.dispatch(new Navigate(['auth'], {[USERNAME_QUERY_PARAM]: _response.username, [PREVIOUS_QUERY_PARAM]: action.previousRoute}));
+          let queryParams = {};
+          if (action.previousRoute && action.previousRoute !== 'undefined') {
+            queryParams = {
+              [PREVIOUS_QUERY_PARAM]: action.previousRoute
+            };
+          }
+          this.store.dispatch(new Navigate(['auth'], {[USERNAME_QUERY_PARAM]: _response.username, ...queryParams}));
           patchState({
             errors: [],
           });

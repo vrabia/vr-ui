@@ -1,11 +1,5 @@
 import { UserDetail } from "@shared/models/user.model";
-
-export interface Song {
-  id?: string;
-  title: string;
-  artist: string;
-  genre?: string;
-}
+import { Song } from "@shared/models/music.enum";
 
 export interface ListenedSong {
   song: Song;

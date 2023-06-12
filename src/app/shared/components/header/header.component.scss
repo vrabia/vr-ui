@@ -11,16 +11,16 @@
 }
 
 .navbar-content {
-  width: 60%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
 
   @include xl-screen {
-    width: 25%;
+    width: 35%;
   }
 
   @include l-screen {
-    width: 35%;
+    width: 45%;
   }
 
   @include m-screen {

@@ -12,6 +12,12 @@ export interface Friendship {
   friendsSince: string;
 }
 
+export interface PagedFriendships {
+  friendshipDTO: Friendship[];
+  totalPages: number;
+  currentPage: number;
+}
+
 export enum FriendStatus {
   ACCEPTED = 'ACCEPTED',
   SENT = 'SENT',

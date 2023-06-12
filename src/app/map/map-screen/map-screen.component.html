@@ -1,0 +1,21 @@
+<div class="background hidden-overflow" *ngIf="apiLoaded | async">
+  <google-map height="90vh" [width]="null" [center]="center" [zoom]="zoom"
+              [options]="{mapId: '77c304f4874185e9'}"
+              (mapClick)="closeInfoWindow(infoWindow)">
+    <map-marker *ngFor="let music of musicLocation"
+                [position]="{lat: music.latitude, lng: music.longitude}"
+                [options]="markerOptions"
+                (mapClick)="openInfoWindow(infoWindow, $event, music)"
+    >
+    </map-marker>
+    <map-info-window #infoWindow="mapInfoWindow">
+      <!-- Customize the content of the info window as per your requirements -->
+      <div>
+        <div class="text text__section text__section--primary mb-2">{{ selectedMarker?.user?.username }}</div>
+        <div class="text text__subtitle text__subtitle--primary text__subtitle--bold d-inline">{{ selectedMarker?.song?.title }}</div>
+        <div class="text text__default text__default--secondary mb-2 d-inline"> - {{ selectedMarker?.song?.artist }}</div>
+        <div class="mt-3">{{selectedMarker?.listenedAt | date : 'hh:mm MMM d, y'}}</div>
+      </div>
+    </map-info-window>
+  </google-map>
+</div>

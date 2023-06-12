@@ -47,6 +47,12 @@ $section-size: 1.3rem;
     &--secondary {
       color: $secondary;
     }
+    &--white {
+      color: $white;
+    }
+    &--bold {
+      font-weight: bold;
+    }
   }
 
   &__label {
@@ -109,6 +115,10 @@ $section-size: 1.3rem;
 
     &--white {
       color: $white;
+    }
+
+    &--bold {
+      font-weight: bold;
     }
   }
 }

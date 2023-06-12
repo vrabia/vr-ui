@@ -12,6 +12,7 @@ export class NavBarComponent extends BaseComponent implements OnInit{
     {url: '/feed', name: 'Feed'},
     {url: '/friends', name: 'Friends'},
     {url: '/map', name: 'Map'},
+    {url: '/communities', name: 'Communities'},
   ]
 
   constructor() {

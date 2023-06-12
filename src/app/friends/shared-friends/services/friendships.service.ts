@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from "@environments/environment";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Friendship } from "@friends/shared-friends/model/friend.model";
+import { Friendship, PagedFriendships } from "@friends/shared-friends/model/friend.model";
 
 @Injectable({
   providedIn: 'root'
@@ -13,24 +13,24 @@ export class FriendshipsService {
   constructor(private http: HttpClient) {
   }
 
-  getFriends(search: string, page: number, pageSize: number): Observable<Friendship[]> {
+  getFriends(search: string, page: number, pageSize: number): Observable<PagedFriendships> {
     const params: HttpParams = this.buildQueryParams(search, page, pageSize)
-    return this.http.get<Friendship[]>(`${this.baseUrl}/friends`, { params });
+    return this.http.get<PagedFriendships>(`${this.baseUrl}/friends`, { params });
   }
 
-  getSentFriendRequests(search: string, page: number, pageSize: number): Observable<Friendship[]> {
+  getSentFriendRequests(search: string, page: number, pageSize: number): Observable<PagedFriendships> {
     const params: HttpParams = this.buildQueryParams(search, page, pageSize)
-    return this.http.get<Friendship[]>(`${this.baseUrl}/friend-request/sent`, { params });
+    return this.http.get<PagedFriendships>(`${this.baseUrl}/friend-request/sent`, { params });
   }
 
-  getReceivedFriendRequests(search: string, page: number, pageSize: number): Observable<Friendship[]> {
+  getReceivedFriendRequests(search: string, page: number, pageSize: number): Observable<PagedFriendships> {
     const params: HttpParams = this.buildQueryParams(search, page, pageSize)
-    return this.http.get<Friendship[]>(`${this.baseUrl}/friend-request/received`, { params });
+    return this.http.get<PagedFriendships>(`${this.baseUrl}/friend-request/received`, { params });
   }
 
-  getUsersWithStatus(search: string, page: number, pageSize: number): Observable<Friendship[]> {
+  getUsersWithStatus(search: string, page: number, pageSize: number): Observable<PagedFriendships> {
     const params: HttpParams = this.buildQueryParams(search, page, pageSize)
-    return this.http.get<Friendship[]>(`${this.baseUrl}/users`, { params });
+    return this.http.get<PagedFriendships>(`${this.baseUrl}/users`, { params });
   }
 
   sendFriendRequest(userId: string) {

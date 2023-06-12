@@ -13,3 +13,10 @@ export enum MusicGenres {
   ELECTRONIC = 'ELECTRONIC',
   OTHER = 'OTHER'
 }
+
+export interface Song {
+  id?: string;
+  title: string;
+  artist: string;
+  genre?: string;
+}

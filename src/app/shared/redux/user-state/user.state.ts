@@ -31,6 +31,11 @@ export class UserState {
     return state.user?.username;
   }
 
+  @Selector()
+  static  userId(state: UserStateModel) {
+    return state.user?.id;
+  }
+
   @Action(UpdateUser)
   updateUser({ getState, patchState }: StateContext<UserStateModel>, action: UpdateUser) {
     let userInfo = action.userInfo;
@@ -63,6 +68,8 @@ export class UserState {
     const isLogged = true;
     const userInfo = {
       username: decodedToken.sub,
+      id: decodedToken.userId,
+      email: decodedToken.email,
       roles: decodedToken.roles
     }
 

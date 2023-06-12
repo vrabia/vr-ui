@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule } from "@angular/common/http";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { NgxsModule } from "@ngxs/store";
@@ -15,6 +15,7 @@ import { JwtTokenInterceptor } from "@shared/interceptors/jwt-token.interceptor"
 import { NgxsStoragePluginModule, SESSION_STORAGE_ENGINE } from "@ngxs/storage-plugin";
 import { UserState } from "@shared/redux/user-state/user.state";
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MusicAtLocationState } from "@map/shared-map/redux/music-state/music-at-location.state";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     InfiniteScrollModule,
     NgxsModule.forRoot(appStates),
     NgxsLoggerPluginModule.forRoot(),
@@ -34,7 +36,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
       key: [{
         key: UserState,
         engine: SESSION_STORAGE_ENGINE
-      }]
+      },
+        {
+          key: MusicAtLocationState,
+          engine: SESSION_STORAGE_ENGINE
+        }
+      ]
     }),
     ReactiveFormsModule,
     SharedModule

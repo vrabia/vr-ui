@@ -82,7 +82,8 @@ export class FriendsState {
     if (friendsGroup.page > 0 && friendsGroup.page >= friendsGroup.totalPages) {
       return;
     }
-    return this.friendsService.getFriends(action.searchString, friendsGroup.page, friendsGroup.pageSize).pipe(tap((friendships) => {
+    return this.friendsService.getFriends(action.searchString, friendsGroup.page, friendsGroup.pageSize).pipe(tap((pagedFriendships) => {
+      const friendships = pagedFriendships.friendshipDTO;
       const userIds = friendships.map(friendship => friendship.friend.id);
       this.userService.getUserListUsernameAndEmail(userIds).pipe(take(1)).subscribe((users) => {
         const newFriendsGroup = friendships.map((friendship) => {
@@ -99,6 +100,7 @@ export class FriendsState {
             ...friendsGroup,
             page: friendsGroup.page + 1,
             friends: [...friendsGroup.friends, ...newFriendsGroup],
+            totalPages: pagedFriendships.totalPages,
           }
         });
       });
@@ -118,7 +120,8 @@ export class FriendsState {
     if (friendsGroup.page > 0 && friendsGroup.page >= friendsGroup.totalPages) {
       return;
     }
-    return this.friendsService.getReceivedFriendRequests(action.searchString, friendsGroup.page, friendsGroup.pageSize).pipe(tap((friendships) => {
+    return this.friendsService.getReceivedFriendRequests(action.searchString, friendsGroup.page, friendsGroup.pageSize).pipe(tap((pagedFriendships) => {
+      const friendships = pagedFriendships.friendshipDTO;
       const userIds = friendships.map(friendship => friendship.friend.id);
       this.userService.getUserListUsernameAndEmail(userIds).pipe(take(1)).subscribe((users) => {
         const newFriendsGroup = friendships.map((friendship) => {
@@ -135,6 +138,7 @@ export class FriendsState {
             ...friendsGroup,
             page: friendsGroup.page + 1,
             friends: [...friendsGroup.friends, ...newFriendsGroup],
+            totalPages: pagedFriendships.totalPages,
           }
         });
       });
@@ -154,7 +158,8 @@ export class FriendsState {
     if (friendsGroup.page > 0 && friendsGroup.page >= friendsGroup.totalPages) {
       return;
     }
-    return this.friendsService.getSentFriendRequests(action.searchString, friendsGroup.page, friendsGroup.pageSize).pipe(tap((friendships) => {
+    return this.friendsService.getSentFriendRequests(action.searchString, friendsGroup.page, friendsGroup.pageSize).pipe(tap((pagedFriendships) => {
+      const friendships = pagedFriendships.friendshipDTO;
       const userIds = friendships.map(friendship => friendship.friend.id);
       this.userService.getUserListUsernameAndEmail(userIds).pipe(take(1)).subscribe((users) => {
         const newFriendsGroup = friendships.map((friendship) => {
@@ -171,6 +176,7 @@ export class FriendsState {
             ...friendsGroup,
             page: friendsGroup.page + 1,
             friends: [...friendsGroup.friends, ...newFriendsGroup],
+            totalPages: pagedFriendships.totalPages,
           }
         });
       });
@@ -190,7 +196,8 @@ export class FriendsState {
     if (friendsGroup.page > 0 && friendsGroup.page >= friendsGroup.totalPages) {
       return;
     }
-    return this.friendsService.getUsersWithStatus(action.searchString, friendsGroup.page, friendsGroup.pageSize).pipe(tap((friendships) => {
+    return this.friendsService.getUsersWithStatus(action.searchString, friendsGroup.page, friendsGroup.pageSize).pipe(tap((pagedFriendships) => {
+      const friendships = pagedFriendships.friendshipDTO;
       const userIds = friendships.map(friendship => friendship.friend.id);
       this.userService.getUserListUsernameAndEmail(userIds).pipe(take(1)).subscribe((users) => {
         const newFriendsGroup = friendships.map((friendship) => {
@@ -207,6 +214,7 @@ export class FriendsState {
             ...friendsGroup,
             page: friendsGroup.page + 1,
             friends: [...friendsGroup.friends, ...newFriendsGroup],
+            totalPages: pagedFriendships.totalPages,
           }
         });
       });

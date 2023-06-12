@@ -16,6 +16,6 @@
 
   <div class="d-flex flex-row justify-content-center mt-4">
     <span class="text text__label text__label--secondary">Don't have an account? &nbsp;</span>
-    <a href="{{'auth/register?' + PREVIOUS_QUERY_PARAM + '=' + previousRouteParam}}" class="link link__primary">Register</a>
+    <a href="{{'auth/register?' + (previousRouteParam ? PREVIOUS_QUERY_PARAM + '=' + previousRouteParam : '')}}" class="link link__primary">Register</a>
   </div>
 </div>

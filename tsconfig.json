@@ -29,6 +29,12 @@
       "@friends/*": [
         "src/app/friends/*"
       ],
+      "@map/*": [
+        "src/app/map/*"
+      ],
+      "@communities/*": [
+        "src/app/communities/*"
+      ],
     },
     "strictPropertyInitialization": false,
     "outDir": "./dist/out-tsc",

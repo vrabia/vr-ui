@@ -19,7 +19,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     DropdownMenuComponent,
     ClickOutsideDirective,
     NavBarComponent,
-    SearchInputComponent
+    SearchInputComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -34,7 +34,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     HeaderComponent,
     InputBoxesComponent,
     ClickOutsideDirective,
-    SearchInputComponent
+    SearchInputComponent,
   ],
 })
 export class SharedModule {

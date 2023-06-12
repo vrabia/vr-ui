@@ -22,6 +22,16 @@ const routes: Routes = [
     canActivate: [AuthenticatedGuard]
   },
   {
+    path: 'map',
+    loadChildren: () => import('@map/map.module').then(m => m.MapModule),
+    canActivate: [AuthenticatedGuard]
+  },
+  {
+    path: 'communities',
+    loadChildren: () => import('@communities/communities.module').then(m => m.CommunitiesModule),
+    canActivate: [AuthenticatedGuard]
+  },
+  {
     path: '',
     redirectTo: 'feed',
     pathMatch: 'full'

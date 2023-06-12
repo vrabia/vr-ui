@@ -6,7 +6,7 @@
   <div *ngIf="stepNr === 1" class="col-sm-12 col-md-6 col-lg-5 col-xxl-4 mt-5">
     <div class="row text text__title text__title--primary mb-5 pb-4">
       Heard you want an account?
-      <div class="text text__label text__label--secondary">Already have an account? <a class="link link__primary" href="{{'/auth?' + PREVIOUS_QUERY_PARAM + '=' + previousRouteParam}}">Login</a></div>
+      <div class="text text__label text__label--secondary">Already have an account? <a class="link link__primary" href="{{'/auth?' + (previousRouteParam ? PREVIOUS_QUERY_PARAM + '=' + previousRouteParam : '')}}">Login</a></div>
 
     </div>
 
